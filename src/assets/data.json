@@ -1,0 +1,25 @@
+{
+  "timestamp": 1738782730.8539813,
+  "datos": [
+    {
+      "nombre": "El69DeAlaska#LAS",
+      "rango": "Sin_rango",
+      "divicion": 0,
+      "lp": 0,
+      "partidas_jugadas": 0,
+      "victorias": 0,
+      "derrotas": 0,
+      "winrate": 0.0
+    },
+    {
+      "nombre": "NoisyDark#LAS",
+      "rango": "PLATINUM",
+      "divicion": 1,
+      "lp": 90,
+      "partidas_jugadas": 15,
+      "victorias": 8,
+      "derrotas": 7,
+      "winrate": 53.33
+    }
+  ]
+}
