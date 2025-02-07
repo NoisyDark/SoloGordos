@@ -1,10 +1,10 @@
 {
-  "timestamp": 1738782730.8539813,
+  "timestamp": 1738892232.7355342,
   "datos": [
     {
-      "nombre": "El69DeAlaska#LAS",
+      "nombre": "nombre_completo",
       "rango": "Sin_rango",
-      "divicion": 0,
+      "division": 0,
       "lp": 0,
       "partidas_jugadas": 0,
       "victorias": 0,
@@ -14,12 +14,22 @@
     {
       "nombre": "NoisyDark#LAS",
       "rango": "PLATINUM",
-      "divicion": 1,
-      "lp": 90,
+      "division": "I",
+      "lp": 20,
       "partidas_jugadas": 15,
       "victorias": 8,
       "derrotas": 7,
       "winrate": 53.33
+    },
+    {
+      "nombre": "MrExequias#LAS",
+      "rango": "IRON",
+      "division": "IV",
+      "lp": 72,
+      "partidas_jugadas": 5,
+      "victorias": 1,
+      "derrotas": 4,
+      "winrate": 20.0
     }
   ]
 }

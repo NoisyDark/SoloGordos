@@ -2,19 +2,20 @@ import { useState, useEffect } from "react";
 import "./styles.css";
 import data from "./assets/data.json";
 
-const value = {
-  IRON: 1000,
-  BRONZE: 2000,
-  SILVER: 3000,
-  GOLD: 4000,
-  PLATINUM: 5000,
-  EMERALD: 6000,
-  DIAMOND: 7000,
-  MASTER: 8000,
-  GRAND_MASTER: 9000,
-  CHALLENGER: 10000,
+const rankingValues = {
+  CHALLENGER: 1000,
+  GRANDMASTER: 900,
+  MASTER: 800,
+  DIAMOND: 700,
+  PLATINUM: 600,
+  GOLD: 500,
+  SILVER: 400,
+  BRONZE: 300,
+  IRON: 200,
+  Sin_rango: 0,
 };
-const arrMock = [400, 300, 200, 100];
+
+const arrMock = [0, 100, 200, 300, 400]; // Puntos extra por división
 
 const Header = ({ setSection }) => (
   <header>
@@ -50,8 +51,22 @@ const Clasificacion = () => {
   const [jugadores, setJugadores] = useState([]);
 
   useEffect(() => {
-    setJugadores(data.datos);
-  }, []);
+    const sortedPlayers = data.datos
+      .map((jugador) => {
+        const basePoints = rankingValues[jugador.rango] || 0;
+        const lpPoints = jugador.lp;
+        const divisionPoints =
+          jugador.division > 0 ? arrMock[jugador.division] || 0 : 0;
+
+        return {
+          ...jugador,
+          totalPoints: basePoints + lpPoints + divisionPoints,
+        };
+      })
+      .sort((a, b) => b.totalPoints - a.totalPoints);
+
+    setJugadores(sortedPlayers);
+  }, [data]);
 
   return (
     <section className="contenido activo">
@@ -62,6 +77,9 @@ const Clasificacion = () => {
             <th>Posición</th>
             <th>Jugador</th>
             <th>Elo</th>
+            <th>Victorias</th>
+            <th>Derrotas</th>
+            <th>Win Rate</th>
           </tr>
         </thead>
         <tbody>
@@ -70,6 +88,9 @@ const Clasificacion = () => {
               <td>{index + 1}</td>
               <td>{jugador.nombre}</td>
               <td>{jugador.rango}</td>
+              <td>{jugador.victorias}</td>
+              <td>{jugador.derrotas}</td>
+              <td>{jugador.winrate}</td>
             </tr>
           ))}
         </tbody>
