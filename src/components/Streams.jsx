@@ -33,13 +33,13 @@ const streamers = [
 ];
 
 const Streams = () => {
-    useEffect()
     const twitchRef = useRef(null);
     const canalTwitch = "agustinitita";
 
     useEffect(() => {
-        if (window.Twitch && twitchRef.current) {
-            new window.Twitch.Embed(twitchRef.current.id, {
+        // Evitar la doble inicialización
+        if (window.Twitch && twitchRef.current && !twitchRef.current.hasChildNodes()) {
+            new window.Twitch.Embed("twitch-embed", { // Aseguramos que el ID sea el correcto
                 width: "100%",
                 height: "400",
                 channel: canalTwitch,
@@ -53,7 +53,6 @@ const Streams = () => {
             });
         }
     }, []);
-
     return (
         <section id="streams" className="contenido">
             <h2>Streams</h2>
