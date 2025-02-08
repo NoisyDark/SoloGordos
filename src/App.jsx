@@ -117,14 +117,6 @@ const Premios = () => (
   </section>
 );
 
-const Streams = () => (
-  <section id="streams" className="contenido">
-    <h2>Streams</h2>
-    <div id="twitch-embed" className="stream-box"></div>
-    {/* Tabla de streamers */}
-  </section>
-);
-
 const Footer = () => (
   <footer>
     <p>© Copyright 2025 SoloGordos. Todos los derechos reservados.</p>
