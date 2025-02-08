@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./styles.css";
 import data from "./assets/data.json";
 
+// Simulación de la lógica de clasificación
 const rankingValues = {
   CHALLENGER: 1000,
   GRANDMASTER: 900,
@@ -15,8 +16,7 @@ const rankingValues = {
   Sin_rango: 0,
 };
 
-const arrMock = [0, 100, 200, 300, 400]; // Puntos extra por división
-
+// Función que muestra las secciones
 const Header = ({ setSection }) => (
   <header>
     <div className="logo">
@@ -24,28 +24,21 @@ const Header = ({ setSection }) => (
       <h1>SoloGordos</h1>
     </div>
     <nav>
-      <button onClick={() => setSection("clasificacion")}>Clasificación</button>
-      <button onClick={() => setSection("premios")}>Premios</button>
-      <button onClick={() => setSection("streams")}>Streams</button>
+      <button onClick={() => setSection('clasificacion')}>Clasificación</button>
+      <button onClick={() => setSection('premios')}>Premios</button>
+      <button onClick={() => setSection('streams')}>Streams</button>
     </nav>
     <div className="social">
-      <a
-        href="https://x.com/agustinititaaa"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="img/X.png" alt="X" />
+      <a href="https://x.com/agustinititaaa" target="_blank" rel="noopener noreferrer">
+        <img src="img/X.png" alt="Twitter" />
       </a>
-      <a
-        href="https://discord.gg/rkvQDshx58"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://discord.gg/rkvQDshx58" target="_blank" rel="noopener noreferrer">
         <img src="img/disc.png" alt="Discord" />
       </a>
     </div>
   </header>
 );
+
 
 const Clasificacion = () => {
   const [jugadores, setJugadores] = useState([]);
@@ -55,8 +48,7 @@ const Clasificacion = () => {
       .map((jugador) => {
         const basePoints = rankingValues[jugador.rango] || 0;
         const lpPoints = jugador.lp;
-        const divisionPoints =
-          jugador.division > 0 ? arrMock[jugador.division] || 0 : 0;
+        const divisionPoints = jugador.division > 0 ? jugador.division * 100 : 0;
 
         return {
           ...jugador,
@@ -66,20 +58,18 @@ const Clasificacion = () => {
       .sort((a, b) => b.totalPoints - a.totalPoints);
 
     setJugadores(sortedPlayers);
-  }, [data]);
+  }, []);
 
   return (
-    <section className="contenido activo">
+    <section id="clasificacion" className="contenido activo">
       <h2>Clasificación</h2>
-      <table>
+      <table id="tabla-clasificacion">
         <thead>
           <tr>
             <th>Posición</th>
             <th>Jugador</th>
             <th>Elo</th>
-            <th>Victorias</th>
-            <th>Derrotas</th>
-            <th>Win Rate</th>
+            <th>LP</th>
           </tr>
         </thead>
         <tbody>
@@ -88,9 +78,7 @@ const Clasificacion = () => {
               <td>{index + 1}</td>
               <td>{jugador.nombre}</td>
               <td>{jugador.rango}</td>
-              <td>{jugador.victorias}</td>
-              <td>{jugador.derrotas}</td>
-              <td>{jugador.winrate}</td>
+              <td>{jugador.lp}</td>
             </tr>
           ))}
         </tbody>
@@ -100,34 +88,50 @@ const Clasificacion = () => {
 };
 
 const Premios = () => (
-  <section className="contenido">
+  <section id="premios" className="contenido">
     <h2>Premios</h2>
-    <p>Información sobre los premios.</p>
+    <div className="premios-container">
+      <div className="premio">
+        <h3>Primer lugar</h3>
+        <p>Premio 1</p>
+      </div>
+      <div className="premio">
+        <h3>Segundo lugar</h3>
+        <p>Premio 2</p>
+      </div>
+      <div className="premio">
+        <h3>Tercer lugar</h3>
+        <p>Premio 3</p>
+      </div>
+    </div>
   </section>
 );
 
+
 const Streams = () => (
-  <section className="contenido">
+  <section id="streams" className="contenido">
     <h2>Streams</h2>
-    <p>Previsualización de streams en vivo.</p>
+    <div id="twitch-embed" className="stream-box"></div>
+    {/* Tabla de streamers */}
   </section>
 );
 
 const Footer = () => (
   <footer>
-    <p>&copy; 2025 SoloGordos. Todos los derechos reservados.</p>
+    <p>© Copyright 2025 SoloGordos. Todos los derechos reservados.</p>
   </footer>
 );
 
 export default function App() {
-  const [section, setSection] = useState("clasificacion");
+  const [section, setSection] = useState('clasificacion');
+console.log(section)
   return (
     <div>
       <Header setSection={setSection} />
       <main>
-        {section === "clasificacion" && <Clasificacion />}
-        {section === "premios" && <Premios />}
-        {section === "streams" && <Streams />}
+        {section === 'clasificacion' && <Clasificacion />}
+        {section === 'premios' && <Premios />}
+        {section === 'streams' && <Streams />}
       </main>
       <Footer />
     </div>

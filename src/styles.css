@@ -1,3 +1,4 @@
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ body {
     text-align: center;
 }
 
+/* Estilos de header */
 header {
     display: flex;
     justify-content: space-between;
@@ -56,6 +58,7 @@ nav button {
     text-decoration: none;
 }
 
+/* Estilos de main */
 main {
     padding: 20px;
 }
@@ -68,12 +71,14 @@ main {
     display: block;
 }
 
+/* Estilos de footer */
 footer {
     background-color: #282a36;
     padding: 10px;
     margin-top: 20px;
 }
 
+/* Estilos de tabla */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -93,4 +98,90 @@ th {
 
 td {
     background-color: #444;
+}
+
+/* Estilos de premios */
+.premios-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    text-align: center;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.premio {
+    background: #585353;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.premio-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.premio img {
+    max-width: 180px; 
+    border-radius: 12px;
+}
+
+.premio p {
+    font-size: 1.2rem;
+    max-width: 250px;
+}
+
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 768px) {
+    .premios-container {
+        grid-template-columns: 1fr; /* En pantallas chicas, se pone en una sola columna */
+    }
+
+    .premio img {
+        max-width: 150px; /* Ajustamos el tamaño en móvil */
+    }
+}
+
+/* Estilos para la transmisión de Twitch */
+.stream-box {
+    max-width: 800px;
+    margin: 20px auto;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+td a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+td a:hover {
+    color: red;
 }
