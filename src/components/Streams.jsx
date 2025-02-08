@@ -1,14 +1,40 @@
 import { useEffect, useRef } from "react";
 
 const streamers = [
-    { name: "SoloGordos", twitch: "sologordos_tv", twitter: "agustinititaaa", youtube: "SoloGordos", discord: "rkvQDshx58" },
-    { name: "OtroStreamer", twitch: "otrostreamer", twitter: "otrostreamer", youtube: "otrostreamer", discord: "otrostreamer" },
+    { name: "GORDOBONDIOLA", twitch: "G0rdo_bondiola"},
+    { name: "okarun imissmomo", twitch: "K3vin_89"},
+    { name: "ElSeñorDeLaNoche", twitch: "massiux"},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
+    { name: "", twitch: ""},
     // Agrega más streamers aquí
 ];
 
 const Streams = () => {
     const twitchRef = useRef(null);
-    const canalTwitch = "massiux";
+    const canalTwitch = "agustinitita";
 
     useEffect(() => {
         if (window.Twitch && twitchRef.current) {
@@ -42,9 +68,6 @@ const Streams = () => {
                         <th>#</th>
                         <th>Streamer</th>
                         <th>Twitch</th>
-                        <th>X (Twitter)</th>
-                        <th>YouTube</th>
-                        <th>Discord</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,9 +76,6 @@ const Streams = () => {
                             <td>{index + 1}</td>
                             <td>{streamer.name}</td>
                             <td><a href={`https://www.twitch.tv/${streamer.twitch}`} target="_blank" rel="noopener noreferrer">🔴 Twitch</a></td>
-                            <td><a href={`https://x.com/${streamer.twitter}`} target="_blank" rel="noopener noreferrer">🐦 Twitter</a></td>
-                            <td><a href={`https://www.youtube.com/@${streamer.youtube}`} target="_blank" rel="noopener noreferrer">▶️ YouTube</a></td>
-                            <td><a href={`https://discord.gg/${streamer.discord}`} target="_blank" rel="noopener noreferrer">💬 Discord</a></td>
                         </tr>
                     ))}
                 </tbody>
