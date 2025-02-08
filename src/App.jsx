@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./styles.css";
 import data from "./assets/data.json";
 import logo2 from "./img/logo2.png";
+import Streams from "./components/Streams";
 
 // Simulación de la lógica de clasificación
 const rankingValues = {
