@@ -63,14 +63,6 @@ main {
     padding: 20px;
 }
 
-.contenido {
-    display: none;
-}
-
-.contenido.activo {
-    display: block;
-}
-
 /* Estilos de footer */
 footer {
     background-color: #282a36;
