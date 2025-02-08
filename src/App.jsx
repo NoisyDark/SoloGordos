@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
 import data from "./assets/data.json";
+import logo2 from "./img/logo2.png";
 
 // Simulación de la lógica de clasificación
 const rankingValues = {
@@ -20,25 +21,32 @@ const rankingValues = {
 const Header = ({ setSection }) => (
   <header>
     <div className="logo">
-      <img src="img/logo2.png" alt="Logo" />
+      <img src={logo2} alt="Logo" />
       <h1>SoloGordos</h1>
     </div>
     <nav>
-      <button onClick={() => setSection('clasificacion')}>Clasificación</button>
-      <button onClick={() => setSection('premios')}>Premios</button>
-      <button onClick={() => setSection('streams')}>Streams</button>
+      <button onClick={() => setSection("clasificacion")}>Clasificación</button>
+      <button onClick={() => setSection("premios")}>Premios</button>
+      <button onClick={() => setSection("streams")}>Streams</button>
     </nav>
     <div className="social">
-      <a href="https://x.com/agustinititaaa" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://x.com/agustinititaaa"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img src="img/X.png" alt="Twitter" />
       </a>
-      <a href="https://discord.gg/rkvQDshx58" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://discord.gg/rkvQDshx58"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img src="img/disc.png" alt="Discord" />
       </a>
     </div>
   </header>
 );
-
 
 const Clasificacion = () => {
   const [jugadores, setJugadores] = useState([]);
@@ -48,7 +56,8 @@ const Clasificacion = () => {
       .map((jugador) => {
         const basePoints = rankingValues[jugador.rango] || 0;
         const lpPoints = jugador.lp;
-        const divisionPoints = jugador.division > 0 ? jugador.division * 100 : 0;
+        const divisionPoints =
+          jugador.division > 0 ? jugador.division * 100 : 0;
 
         return {
           ...jugador,
@@ -107,7 +116,6 @@ const Premios = () => (
   </section>
 );
 
-
 const Streams = () => (
   <section id="streams" className="contenido">
     <h2>Streams</h2>
@@ -123,15 +131,15 @@ const Footer = () => (
 );
 
 export default function App() {
-  const [section, setSection] = useState('clasificacion');
-console.log(section)
+  const [section, setSection] = useState("clasificacion");
+  console.log(section);
   return (
     <div>
       <Header setSection={setSection} />
       <main>
-        {section === 'clasificacion' && <Clasificacion />}
-        {section === 'premios' && <Premios />}
-        {section === 'streams' && <Streams />}
+        {section === "clasificacion" && <Clasificacion />}
+        {section === "premios" && <Premios />}
+        {section === "streams" && <Streams />}
       </main>
       <Footer />
     </div>
