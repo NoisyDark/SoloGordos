@@ -33,26 +33,29 @@ const streamers = [
 ];
 
 const Streams = () => {
-    const twitchRef = useRef(null);
-    const canalTwitch = "agustinitita";
-
     useEffect(() => {
-        if (window.Twitch && twitchRef.current) {
-            new window.Twitch.Embed(twitchRef.current.id, {
-                width: "100%",
-                height: "400",
-                channel: canalTwitch,
-                layout: "video",
-                autoplay: false,
-            });
+    const canalTwitch = "massiux";
+    const embedContainer = document.getElementById("twitch-embed");
 
-            // Redireccionar al hacer clic en el reproductor
-            twitchRef.current.addEventListener("click", () => {
-                window.open(`https://www.twitch.tv/${canalTwitch}`, "_blank");
-            });
-        }
+      // Si ya existe un iframe dentro de #twitch-embed, lo eliminamos antes de agregar uno nuevo
+    if (embedContainer?.querySelector("iframe")) {
+        embedContainer.innerHTML = "";
+    }
+
+      // Crear el nuevo embed de Twitch
+    new Twitch.Embed("twitch-embed", {
+        width: "100%",
+        height: "400",
+        channel: canalTwitch,
+        layout: "video",
+        autoplay: false,
+    });
+
+      // Redireccionar al hacer clic en el reproductor
+    embedContainer?.addEventListener("click", () => {
+        window.open(`https://www.twitch.tv/${canalTwitch}`, "_blank");
+    });
     }, []);
-
     return (
         <section id="streams" className="contenido">
             <h2>Streams</h2>
